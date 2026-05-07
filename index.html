@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الجامعة الذكي | Smart University</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <div class="app-layout">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="logo-area" onclick="loadView('dashboard')">
+                <i class="fas fa-university logo-icon"></i>
+                <h2>Smart University</h2>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="#" class="nav-item" data-view="students">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>الطلاب</span>
+                </a>
+                <a href="#" class="nav-item" data-view="courses">
+                    <i class="fas fa-book-open"></i>
+                    <span>المقررات</span>
+                </a>
+                <a href="#" class="nav-item" data-view="faculty">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>هيئة التدريس</span>
+                </a>
+                <a href="#" class="nav-item" data-view="admissions">
+                    <i class="fas fa-file-signature"></i>
+                    <span>القبول</span>
+                </a>
+                <a href="#" class="nav-item" data-view="exams">
+                    <i class="fas fa-poll-h"></i>
+                    <span>الامتحانات</span>
+                </a>
+                <a href="#" class="nav-item" data-view="library">
+                    <i class="fas fa-book-reader"></i>
+                    <span>المكتبة</span>
+                </a>
+                <a href="#" class="nav-item" data-view="financials">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>المالية</span>
+                </a>
+            </nav>
+
+            <div class="user-profile">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="global-search" placeholder="بحث سريع في النظام...">
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <div class="actions-group">
+                    <button class="icon-btn" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge" id="notif-count">3</span>
+                    </button>
+                    <div class="notif-dropdown" id="notif-dropdown">
+                        <!-- Notifications injected here -->
+                    </div>
+                    
+                    <button class="icon-btn" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <div class="user-info">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=00F0FF&color=000&bold=true" alt="User Avatar" class="avatar" onclick="loadView('profile')">
+                    </div>
+                </div>
+
+                <div class="header-info">
+                    <div class="clock" id="live-clock">00:00:00</div>
+                    <div class="date" id="live-date">تحميل التاريخ...</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="view-container" class="view-container">
+                <!-- Content injected here by script.js -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add Student Modal -->
+    <div class="modal-overlay" id="student-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة طالب جديد</h3>
+                <button class="close-modal" onclick="closeModal('student-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-student-form">
+                <div class="form-group">
+                    <label>اسم الطالب الرباعي</label>
+                    <input type="text" id="s-name" required placeholder="أدخل اسم الطالب...">
+                </div>
+                <div class="form-group">
+                    <label>الكلية</label>
+                    <select id="s-college" required>
+                        <option value="">اختر الكلية...</option>
+                        <option value="كلية الهندسة">كلية الهندسة</option>
+                        <option value="كلية الطب">كلية الطب</option>
+                        <option value="كلية الحاسبات والذكاء الاصطناعي">كلية الحاسبات والذكاء الاصطناعي</option>
+                        <option value="كلية التجارة">كلية التجارة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>السنة الدراسية</label>
+                    <select id="s-year" required>
+                        <option value="السنة الأولى">السنة الأولى</option>
+                        <option value="السنة الثانية">السنة الثانية</option>
+                        <option value="السنة الثالثة">السنة الثالثة</option>
+                        <option value="السنة الرابعة">السنة الرابعة</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">حفظ بيانات الطالب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Course Modal -->
+    <div class="modal-overlay" id="course-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة مقرر جديد</h3>
+                <button class="close-modal" onclick="closeModal('course-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-course-form">
+                <div class="form-group">
+                    <label>اسم المقرر</label>
+                    <input type="text" id="c-name" required placeholder="مثال: هندسة البرمجيات...">
+                </div>
+                <div class="form-group">
+                    <label>أستاذ المادة</label>
+                    <input type="text" id="c-doctor" required placeholder="اسم الدكتور المحاضر...">
+                </div>
+                <div class="form-group">
+                    <label>عدد الساعات المعتمدة</label>
+                    <input type="number" id="c-hours" min="1" max="6" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">إضافة المقرر</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Faculty Modal -->
+    <div class="modal-overlay" id="faculty-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة عضو هيئة تدريس</h3>
+                <button class="close-modal" onclick="closeModal('faculty-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-faculty-form">
+                <div class="form-group">
+                    <label>الاسم</label>
+                    <input type="text" id="f-name" required placeholder="أدخل الاسم...">
+                </div>
+                <div class="form-group">
+                    <label>القسم</label>
+                    <input type="text" id="f-dept" required placeholder="مثال: قسم علوم الحاسب...">
+                </div>
+                <div class="form-group">
+                    <label>الدرجة العلمية</label>
+                    <select id="f-degree" required>
+                        <option value="أستاذ">أستاذ</option>
+                        <option value="أستاذ مشارك">أستاذ مشارك</option>
+                        <option value="أستاذ مساعد">أستاذ مساعد</option>
+                        <option value="محاضر">محاضر</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">إضافة</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Admission Modal -->
+    <div class="modal-overlay" id="admission-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>تسجيل طلب قبول جديد</h3>
+                <button class="close-modal" onclick="closeModal('admission-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-admission-form">
+                <div class="form-group">
+                    <label>اسم المتقدم</label>
+                    <input type="text" id="a-name" required placeholder="أدخل الاسم الثلاثي...">
+                </div>
+                <div class="form-group">
+                    <label>معدل الثانوية العامة</label>
+                    <input type="number" step="0.01" id="a-score" required placeholder="مثال: 95.5">
+                </div>
+                <div class="form-group">
+                    <label>الرغبة الأولى</label>
+                    <select id="a-choice" required>
+                        <option value="الطب البشري">الطب البشري</option>
+                        <option value="هندسة البرمجيات">هندسة البرمجيات</option>
+                        <option value="إدارة الأعمال">إدارة الأعمال</option>
+                        <option value="الحقوق">الحقوق</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">تسجيل الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Exam Modal -->
+    <div class="modal-overlay" id="exam-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>جدولة امتحان جديد</h3>
+                <button class="close-modal" onclick="closeModal('exam-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-exam-form">
+                <div class="form-group">
+                    <label>اسم المقرر</label>
+                    <input type="text" id="e-course" required placeholder="مثال: هندسة البرمجيات...">
+                </div>
+                <div class="form-group">
+                    <label>تاريخ الامتحان</label>
+                    <input type="date" id="e-date" required>
+                </div>
+                <div class="form-group">
+                    <label>وقت الامتحان</label>
+                    <input type="time" id="e-time" required>
+                </div>
+                <div class="form-group">
+                    <label>القاعة / المعمل</label>
+                    <input type="text" id="e-hall" required placeholder="مثال: القاعة الكبرى A">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">حفظ الموعد</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Book Modal -->
+    <div class="modal-overlay" id="book-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة كتاب جديد</h3>
+                <button class="close-modal" onclick="closeModal('book-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-book-form">
+                <div class="form-group">
+                    <label>عنوان الكتاب</label>
+                    <input type="text" id="b-title" required placeholder="أدخل عنوان الكتاب...">
+                </div>
+                <div class="form-group">
+                    <label>اسم المؤلف</label>
+                    <input type="text" id="b-author" required placeholder="أدخل اسم المؤلف...">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">إضافة الكتاب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Invoice Modal -->
+    <div class="modal-overlay" id="invoice-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إصدار فاتورة رسوم</h3>
+                <button class="close-modal" onclick="closeModal('invoice-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="add-invoice-form">
+                <div class="form-group">
+                    <label>اسم الطالب</label>
+                    <input type="text" id="i-student" required placeholder="أدخل اسم الطالب...">
+                </div>
+                <div class="form-group">
+                    <label>نوع الرسوم</label>
+                    <select id="i-type" required>
+                        <option value="رسوم دراسية">رسوم دراسية</option>
+                        <option value="رسوم تسجيل">رسوم تسجيل</option>
+                        <option value="غرامة تأخير">غرامة تأخير</option>
+                        <option value="رسوم مكتبة">رسوم مكتبة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>المبلغ ($)</label>
+                    <input type="number" id="i-amount" required placeholder="مثال: 500">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">إصدار الفاتورة</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
