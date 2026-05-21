@@ -22,8 +22,8 @@ const state = {
         { id: '#B-102', title: 'خوارزميات هياكل البيانات', author: 'توماس كورمن', status: 'borrowed' }
     ],
     exams: [
-        { id: '#EX-01', course: 'هندسة البرمجيات 1', date: '2023-12-15', time: '10:00 AM', hall: 'القاعة الكبرى A' },
-        { id: '#EX-02', course: 'مقدمة في الذكاء الاصطناعي', date: '2023-12-18', time: '01:00 PM', hall: 'معمل الحاسبات 3' }
+        { id: '#EX-01', course: 'هندسة البرمجيات 1', date: '2026-05-27', time: '10:00 AM', hall: 'القاعة الكبرى A' },
+        { id: '#EX-02', course: 'مقدمة في الذكاء الاصطناعي', date: '2026-05-30', time: '01:00 PM', hall: 'معمل الحاسبات 3' }
     ],
     financials: [
         { id: '#INV-001', student: 'أحمد محمد علي', amount: '5000$', type: 'رسوم دراسية', status: 'paid' },
@@ -47,7 +47,7 @@ const renderViews = () => ({
             <div class="dashboard-grid">
                 <div class="stat-card" style="animation-delay: 0.1s">
                     <div class="stat-icon" style="color: #00F0FF"><i class="fas fa-user-graduate"></i></div>
-                    <div class="stat-details"><h3>إجمالي الطلاب</h3><p>${state.students.length + 15200}</p></div>
+                    <div class="stat-details"><h3>إجمالي الطلاب</h3><p>${state.students.length + 1240}</p></div>
                     <div class="mini-chart">
                         <div class="chart-bar" style="height: 40%"></div>
                         <div class="chart-bar" style="height: 60%"></div>
@@ -58,7 +58,7 @@ const renderViews = () => ({
                 </div>
                 <div class="stat-card" style="animation-delay: 0.2s">
                     <div class="stat-icon" style="color: #BF00FF"><i class="fas fa-book"></i></div>
-                    <div class="stat-details"><h3>المقررات النشطة</h3><p>${state.courses.length + 420}</p></div>
+                    <div class="stat-details"><h3>المقررات النشطة</h3><p>${state.courses.length + 86}</p></div>
                     <div class="mini-chart">
                         <div class="chart-bar" style="height: 30%"></div>
                         <div class="chart-bar" style="height: 50%"></div>
@@ -69,11 +69,11 @@ const renderViews = () => ({
                 </div>
                 <div class="stat-card" style="animation-delay: 0.3s">
                     <div class="stat-icon" style="color: #10B981"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <div class="stat-details"><h3>هيئة التدريس</h3><p>${state.faculty.length + 850}</p></div>
+                    <div class="stat-details"><h3>هيئة التدريس</h3><p>${state.faculty.length + 142}</p></div>
                 </div>
                 <div class="stat-card" style="animation-delay: 0.4s">
                     <div class="stat-icon" style="color: #F59E0B"><i class="fas fa-wallet"></i></div>
-                    <div class="stat-details"><h3>التحصيل المالي</h3><p>$28.4K</p></div>
+                    <div class="stat-details"><h3>التحصيل المالي</h3><p>$1.8M</p></div>
                 </div>
             </div>
             

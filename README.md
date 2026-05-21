@@ -1,8 +1,8 @@
 # Smart University
 
-Responsive university management dashboard concept for organizing academic operations from one admin interface.
+Responsive university management dashboard for organizing academic operations from one admin interface.
 
-## Live Demo
+## Live Site
 
 - Live: https://fleepatef42-sudo.github.io/-SMART-UNIVERSITY-/
 - Source: https://github.com/fleepatef42-sudo/-SMART-UNIVERSITY-
@@ -25,4 +25,4 @@ Responsive university management dashboard concept for organizing academic opera
 
 ## Project Note
 
-This is a client-side admin dashboard demo. It focuses on UI structure, form flows, and dashboard interactions.
+This version focuses on UI structure, form flows, dashboard interactions, and responsive presentation.
