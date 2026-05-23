@@ -732,3 +732,67 @@ body {
         width: auto;
     }
 }
+
+/* Compact top bar for small, large, and XL screens */
+@media (max-width: 640px) {
+    .top-navbar {
+        padding: 9px 10px;
+        gap: 10px;
+    }
+
+    .logo-icon {
+        font-size: 26px;
+    }
+
+    .logo-area h2 {
+        font-size: 16px;
+    }
+
+    .nav-links {
+        gap: 6px;
+    }
+
+    .nav-item {
+        padding: 8px 10px;
+        border-radius: 12px;
+    }
+
+    .search-bar {
+        padding: 8px 12px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .top-navbar {
+        padding: 9px 18px;
+    }
+
+    .logo-icon {
+        font-size: 28px;
+    }
+
+    .logo-area h2 {
+        font-size: 19px;
+    }
+
+    .nav-item {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+
+    .icon-btn,
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .top-navbar {
+        padding: 10px 22px;
+    }
+
+    .nav-item {
+        padding: 10px 15px;
+    }
+}
